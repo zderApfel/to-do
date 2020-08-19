@@ -1,3 +1,32 @@
-#body{
-    color: red;
+body{
+    background-color: #cccc64;
+    margin: 0;
+    padding: 0;
 }
+
+#container{
+    margin-top: 30px;
+}
+
+#project-table{
+    margin: auto;
+}
+
+.project-card{
+    background-color: lightblue;
+    border-radius: 20px;
+    height: 200px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 15px 10px 10px grey;
+}
+
+.todos{
+    text-align: left;
+    height: 60%;
+    width: 90%;
+    margin: auto;
+    border-style: outset;
+    border-color: white;
+}
+
