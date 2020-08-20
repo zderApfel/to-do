@@ -13,7 +13,7 @@ body{
     margin-top: 30px;
 }
 
-#make-new{
+#make-new-button{
     width: 200px;
     height: 75px;
     font-size: 30px;
@@ -42,5 +42,14 @@ body{
     margin: auto;
     border-style: outset;
     border-color: white;
+}
+
+#project-form{
+    margin: auto;
+    background-color: lightblue;
+    box-shadow: 15px 10px 10px grey;
+    border-radius: 20px;
+    height: 90vh;
+    width: 40vw;
 }
 
