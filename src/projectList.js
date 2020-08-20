@@ -1,30 +1,6 @@
-/*
-    --PROJECT LIST HTML FORMAT--
-    <table id="project-table">
-        <tr>
-            <td class="project-card">
-                <h2>_projectname_</h2>
-                <div class="todos">
-                    <ul>Test</ul>
-                    <ul>Other Test</ul>
-                    <ul>...</ul>
-                </div>
-            </td>
-            <td class="project-card">
-                <h2>_projectname_</h2>
-                <div class="todos">
-                    <ul>Test</ul>
-                    <ul>Other Test</ul>
-                    <ul>...</ul>
-                </div>
-            </td>
-        </tr>
-    </table>
-*/
+import { makeForm } from './newProject.js';
 
 let testProject = new Project("Make cookies for baking party", null);
-let testProject2 = new Project("Make cookies for baking party", null);
-let testProject3 = new Project("Make cookies for baking party", null);
 
 function ToDo(name, description, dueDate, priority, notes){
     this.name = name,
@@ -76,15 +52,16 @@ function makeProjectList(){ //Adds projectCards to the DOM
     container.appendChild(buttonContainer);
 
     const makeNew = document.createElement('button');
-    makeNew.id = "make-new";
+    makeNew.id = "make-new-button";
     makeNew.textContent = "New Project";
+    makeNew.addEventListener("click", function(){makeForm()});
     buttonContainer.appendChild(makeNew);
 
     container.appendChild(projectTable);
     projectTable.appendChild(testProject.makeCard());
-    projectTable.appendChild(testProject2.makeCard());
-    projectTable.appendChild(testProject3.makeCard());
-    projectTable.appendChild(testProject3.makeCard());
+    projectTable.appendChild(testProject.makeCard());
+    projectTable.appendChild(testProject.makeCard());
+    projectTable.appendChild(testProject.makeCard());
 }
 
 export { makeProjectList };
