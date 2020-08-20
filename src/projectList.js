@@ -22,10 +22,9 @@
     </table>
 */
 
-function Project(name, todos){
-    this.name = name; //String
-    this.todos = todos; //Array of Objects
-}
+let testProject = new Project("Make cookies for baking party", null);
+let testProject2 = new Project("Make cookies for baking party", null);
+let testProject3 = new Project("Make cookies for baking party", null);
 
 function ToDo(name, description, dueDate, priority, notes){
     this.name = name,
@@ -35,29 +34,27 @@ function ToDo(name, description, dueDate, priority, notes){
     this.notes = notes;
 }
 
-function makeProjectList(){ //Adds projectCards to the DOM
-    const container = document.getElementById("container");
-    const projectTable = document.createElement('table');
-    projectTable.id = "project-table";
-    container.appendChild(projectTable);
+function Project(name, todos){
+    this.name = name; //String
+    this.todos = todos; //Array of Objects
 }
 
-function makeProjectCard(project){ //Creates projectCard DOM object
-    const card = document.createElement('td');
+Project.prototype.makeCard = function(){
+    const card = document.createElement('div');
     card.setAttribute('class', 'project-card');
     
     const title = document.createElement('h2');
-    title.textContent = project.name;
+    title.textContent = this.name;
     card.appendChild(title);
 
     const todoList = document.createElement('div');
     todoList.setAttribute('class', 'todos');
     card.appendChild(todoList);
 
-    for (let x = 0; x < project.todos.length; x++){
+    /*for (let x = 0; x < this.todos.length; x++){
         if (x < 2){
             let toDoItem = document.createElement('ul');
-            toDoItem.textContent = project.todos[x].name;
+            toDoItem.textContent = this.todos[x].name;
             todoList.appendChild(toDoItem);
         }
         else if(x == 2){
@@ -65,9 +62,20 @@ function makeProjectCard(project){ //Creates projectCard DOM object
             toDoItem.textContent = "..."
             todoList.appendChild(toDoItem);
         }
-    }
+    }*/
 
     return card;
+}
+
+function makeProjectList(){ //Adds projectCards to the DOM
+    const container = document.getElementById("container");
+    const projectTable = document.createElement('div');
+    projectTable.id = "project-table";
+    container.appendChild(projectTable);
+    projectTable.appendChild(testProject.makeCard());
+    projectTable.appendChild(testProject2.makeCard());
+    projectTable.appendChild(testProject3.makeCard());
+    projectTable.appendChild(testProject3.makeCard());
 }
 
 export { makeProjectList };

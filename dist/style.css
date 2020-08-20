@@ -5,18 +5,22 @@ body{
 }
 
 #container{
+    text-align: center;
     margin-top: 30px;
 }
 
 #project-table{
     margin: auto;
+    display: inline-grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
 }
 
 .project-card{
     background-color: lightblue;
     border-radius: 20px;
-    height: 200px;
+    height: 300px;
     width: 300px;
+    margin: 15px 15px 0 0;
     text-align: center;
     box-shadow: 15px 10px 10px grey;
 }
