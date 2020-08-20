@@ -1,3 +1,7 @@
+*{
+    font-family: 'Dosis', sans-serif;
+}
+
 body{
     background-color: #cccc64;
     margin: 0;
@@ -7,6 +11,12 @@ body{
 #container{
     text-align: center;
     margin-top: 30px;
+}
+
+#make-new{
+    width: 200px;
+    height: 75px;
+    font-size: 30px;
 }
 
 #project-table{

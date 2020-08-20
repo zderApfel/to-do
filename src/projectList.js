@@ -63,7 +63,6 @@ Project.prototype.makeCard = function(){
             todoList.appendChild(toDoItem);
         }
     }*/
-
     return card;
 }
 
@@ -71,6 +70,16 @@ function makeProjectList(){ //Adds projectCards to the DOM
     const container = document.getElementById("container");
     const projectTable = document.createElement('div');
     projectTable.id = "project-table";
+
+    const buttonContainer = document.createElement('div');
+    buttonContainer.id = "button-container";
+    container.appendChild(buttonContainer);
+
+    const makeNew = document.createElement('button');
+    makeNew.id = "make-new";
+    makeNew.textContent = "New Project";
+    buttonContainer.appendChild(makeNew);
+
     container.appendChild(projectTable);
     projectTable.appendChild(testProject.makeCard());
     projectTable.appendChild(testProject2.makeCard());
