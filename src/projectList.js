@@ -1,4 +1,4 @@
-import { makeForm } from './newProject.js';
+import { projectForm } from './newProject.js';
 
 let testProject = new Project("Make cookies for baking party", null);
 
@@ -54,7 +54,7 @@ function makeProjectList(){ //Adds projectCards to the DOM
     const makeNew = document.createElement('button');
     makeNew.id = "make-new-button";
     makeNew.textContent = "New Project";
-    makeNew.addEventListener("click", function(){makeForm()});
+    makeNew.addEventListener("click", function(){projectForm()});
     buttonContainer.appendChild(makeNew);
 
     container.appendChild(projectTable);
@@ -64,4 +64,4 @@ function makeProjectList(){ //Adds projectCards to the DOM
     projectTable.appendChild(testProject.makeCard());
 }
 
-export { makeProjectList };
+export { makeProjectList, Project };

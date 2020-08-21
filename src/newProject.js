@@ -1,4 +1,6 @@
-function makeForm(){
+import { Project } from "./projectList.js";
+
+function projectForm(){
     const container = document.getElementById("container");
     while (container.firstChild){
         container.removeChild(container.firstChild);
@@ -10,4 +12,4 @@ function makeForm(){
     container.appendChild(form);
 }
 
-export { makeForm }
+export { projectForm }
