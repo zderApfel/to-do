@@ -13,6 +13,8 @@
 import { Project, Todo } from "./projectList.js";
 import { compareAsc, format } from "date-fns";
 
+format(new Date(2020, 8, 22), "MM/dd/yyyy");
+
 function projectForm(){
     const container = document.getElementById("container");
     while (container.firstChild){
