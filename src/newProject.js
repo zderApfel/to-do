@@ -10,7 +10,8 @@
     </div>
 */
 
-import { Project } from "./projectList.js";
+import { Project, Todo } from "./projectList.js";
+import { compareAsc, format } from "date-fns";
 
 function projectForm(){
     const container = document.getElementById("container");
@@ -27,17 +28,20 @@ function projectForm(){
     form.appendChild(title);
 
     const todoContainer = document.createElement("div");
-    todoContainer.id = "enter-todos";
+    todoContainer.id = "todo-container";
     todoContainer.textContent = "Test";
     form.appendChild(todoContainer);
 
-    //MakeTodos
 
     const submitButton = document.createElement("button");
     submitButton.id = "submit-new-button";
     submitButton.textContent = "Submit";
     form.appendChild(submitButton);
 
+}
+
+function toDoBox(container){
+    const newToDo = document.create
 }
 
 export { projectForm }

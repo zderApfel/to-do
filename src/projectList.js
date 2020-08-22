@@ -64,4 +64,4 @@ function makeProjectList(){ //Adds projectCards to the DOM
     projectTable.appendChild(testProject.makeCard());
 }
 
-export { makeProjectList, Project };
+export { makeProjectList, Project, ToDo };
