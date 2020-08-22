@@ -57,7 +57,11 @@ body{
     margin: 20px 0 0 0;
 }
 
-#enter-todos{
+#pname{
+    margin: 20px 0 20px 0;
+}
+
+#todo-container{
     margin: auto;
     width: 85%;
     border-style: inset;
