@@ -54,14 +54,19 @@ body{
 }
 
 #form-title{
-    padding-top: 30px;
+    margin: 20px 0 0 0;
+}
+
+#enter-todos{
+    margin: auto;
+    width: 85%;
+    border-style: inset;
 }
 
 #submit-new-button{
-    position: relative;
     width: 100px;
     height: 50px;
     font-size: 20px;
-    margin-bottom: 30px;
+    margin: 20px 0 20px 0;
 }
 
