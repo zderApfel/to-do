@@ -49,7 +49,19 @@ body{
     background-color: lightblue;
     box-shadow: 15px 10px 10px grey;
     border-radius: 20px;
-    height: 700px;
-    width: 500px;
+    height: auto;
+    width: 600px;
+}
+
+#form-title{
+    padding-top: 30px;
+}
+
+#submit-new-button{
+    position: relative;
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+    margin-bottom: 30px;
 }
 

@@ -8,7 +8,6 @@ function projectForm(){
 
     const form = document.createElement('div');
     form.id = "project-form";
-
     container.appendChild(form);
 }
 
