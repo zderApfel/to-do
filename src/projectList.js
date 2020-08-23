@@ -12,7 +12,7 @@ function ToDo(name, description, dueDate, priority, notes){
 
 function Project(name, todos){
     this.name = name; //String
-    this.todos = todos; //Array of Objects
+    this.todos = todos; //Array of ToDos
 }
 
 Project.prototype.makeCard = function(){
@@ -27,18 +27,25 @@ Project.prototype.makeCard = function(){
     todoList.setAttribute('class', 'todos');
     card.appendChild(todoList);
 
-    /*for (let x = 0; x < this.todos.length; x++){
-        if (x < 2){
-            let toDoItem = document.createElement('ul');
-            toDoItem.textContent = this.todos[x].name;
-            todoList.appendChild(toDoItem);
+    if (this.todos == null){
+        let toDoItem = document.createElement("ol");
+        toDoItem.textContent = "Empty :(";
+        todoList.appendChild(toDoItem);
+    }
+    else{
+        for (let x = 0; x < this.todos.length; x++){
+            if (x < 2){
+                let toDoItem = document.createElement('ol');
+                toDoItem.textContent = this.todos[x].name;
+                todoList.appendChild(toDoItem);
+            }
+            else if(x == 2){
+                let toDoItem = document.createElement('ol');
+                toDoItem.textContent = "...";
+                todoList.appendChild(toDoItem);
+            }
         }
-        else if(x == 2){
-            let toDoItem = document.createElement('ul');
-            toDoItem.textContent = "..."
-            todoList.appendChild(toDoItem);
-        }
-    }*/
+    }
     return card;
 }
 
