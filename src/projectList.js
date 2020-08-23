@@ -51,6 +51,9 @@ Project.prototype.makeCard = function(){
 
 function makeProjectList(){ //Adds projectCards to the DOM
     const container = document.getElementById("container");
+    while (container.firstChild){
+        container.removeChild(container.firstChild);
+    }
     const projectTable = document.createElement('div');
     projectTable.id = "project-table";
 

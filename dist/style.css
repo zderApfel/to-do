@@ -80,7 +80,7 @@ body{
 }
 
 .date-field{
-    margin-right: 5px;
+    margin: 0 5px 5px 0;
     width: 50px;
 }
 
@@ -91,10 +91,10 @@ body{
     border-color: lightblue;
 }
 
-#submit-new-button, #todo-button{
+.todo-button{
     width: 100px;
     height: 50px;
     font-size: 20px;
-    margin: 20px 0 20px 0;
+    margin: 10px 5px 10px 0;
 }
 

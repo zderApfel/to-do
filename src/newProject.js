@@ -1,4 +1,4 @@
-import { Project, Todo } from "./projectList.js";
+import { makeProjectList, Project, Todo } from "./projectList.js";
 import { compareAsc, format } from "date-fns";
 
 format(new Date(2020, 8, 22), "MM/dd/yyyy");
@@ -44,8 +44,16 @@ function projectForm(){
     todoContainer.id = "todo-container";
     form.appendChild(todoContainer);
 
+    const cancelButton = document.createElement("button");
+    cancelButton.id = "cancel-button";
+    cancelButton.setAttribute("class", "todo-button");
+    cancelButton.textContent = "Cancel";
+    cancelButton.addEventListener("click", function(){makeProjectList()});
+    form.appendChild(cancelButton);
+
     const submitButton = document.createElement("button");
     submitButton.id = "submit-new-button";
+    submitButton.setAttribute("class", "todo-button");
     submitButton.textContent = "Submit";
     form.appendChild(submitButton);
 
