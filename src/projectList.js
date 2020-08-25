@@ -2,17 +2,17 @@ import { projectForm } from './newProject.js';
 
 let testProject = new Project("Make cookies for baking party", null);
 
+function Project(name, todos){
+    this.name = name; //String
+    this.todos = todos; //Array of ToDos
+}
+
 function ToDo(name, description, dueDate, priority, notes){
     this.name = name,
     this.description = description;
     this.dueDate = dueDate;
     this.priority = priority;
     this.notes = notes;
-}
-
-function Project(name, todos){
-    this.name = name; //String
-    this.todos = todos; //Array of ToDos
 }
 
 Project.prototype.makeCard = function(){

@@ -3,6 +3,25 @@ import { compareAsc, format } from "date-fns";
 
 format(new Date(2020, 8, 22), "MM/dd/yyyy");
 
+function makeNewProject(){
+    let x = new Project(document.getElementById("pname").textContent, []);
+    if (x.name == "" || x.todos == []){
+        alert("Error! You must have a name and at least one to-do item!");
+    }
+}
+
+function addToDo(){
+    let name = document.getElementById("todo-name").textContent;
+    let description = document.getElementById("description").textContent;
+    let month = document.getElementById("due-month").textContent;
+    let day = document.getElementById("due-day").textContent;
+    let year = document.getElementById("due-year").textContent;
+
+    if (name == "" || description== "" || month == "" || day == "" || year == ""){
+        alert("Error! Make sure all fields are filled!");
+    }
+}
+
 function projectForm(){
     const container = document.getElementById("container");
     while (container.firstChild){
@@ -55,8 +74,8 @@ function projectForm(){
     submitButton.id = "submit-new-button";
     submitButton.setAttribute("class", "todo-button");
     submitButton.textContent = "Submit";
+    submitButton.addEventListener("click", function(){makeNewProject()});
     form.appendChild(submitButton);
-
 }
 
 function makeToDoForm(parent){
@@ -67,6 +86,14 @@ function makeToDoForm(parent){
     parent.appendChild(list2);
     const list3 = document.createElement("ul");
     parent.appendChild(list3);
+
+    const toDoButton = document.createElement("button");
+    toDoButton.id = "add-todo";
+    toDoButton.setAttribute("class", "todo-button");
+    toDoButton.setAttribute("type", "button"); //Since I am using a form, this must be here or page reloads!
+    toDoButton.textContent = "Add To-Do";
+    toDoButton.addEventListener("click", function(){addToDo()});
+    parent.appendChild(toDoButton);
 
     const nameLabel = document.createElement("label");
     nameLabel.setAttribute("for", "todo-name");
