@@ -1,11 +1,12 @@
 import { toDos } from "./makeProjectForm.js";
+import { renderList } from "./makeProjectList.js";
 
 import { format } from "date-fns";
 
 const TEST_PROJECTS = [
-    new Project("Make cookies for baking party", null),
-    new Project("Read more Javascript documentation", null),
-    new Project("Kick gum, chew ass", null)
+    new Project("Make cookies for baking party", []),
+    new Project("Read more Javascript documentation", []),
+    new Project("Kick gum, chew ass", [])
 ];
 
 function Project(name, todos){
@@ -32,6 +33,11 @@ Project.prototype.checkProject = function(){
 Project.prototype.renderProject = function(){
     const card = document.createElement('div');
     card.setAttribute('class', 'project-card');
+
+    let fullProject = () => {this.viewFullProject()};
+    card.addEventListener("click", function(){
+        fullProject();
+    });
     
     const title = document.createElement('h2');
     title.textContent = this.name;
@@ -41,7 +47,7 @@ Project.prototype.renderProject = function(){
     todoList.setAttribute('class', 'todo-previews');
     card.appendChild(todoList);
 
-    if (this.todos == null){
+    if (this.todos.length == 0){
         let toDoItem = document.createElement("ol");
         toDoItem.textContent = "Empty :(";
         todoList.appendChild(toDoItem);
@@ -61,6 +67,63 @@ Project.prototype.renderProject = function(){
         }
     }
     return card;
+}
+
+Project.prototype.viewFullProject = function(){
+    const container = document.getElementById("container");
+    while (container.firstChild){
+        container.removeChild(container.firstChild);
+    }
+
+    const body = document.createElement("div");
+    body.id = "project-form";
+    container.appendChild(body);
+
+    const projectName = document.createElement("h1");
+    projectName.textContent = this.name;
+    body.appendChild(projectName);
+
+    const todoContainer = document.createElement("div");
+    todoContainer.id = "todo-container";
+    body.appendChild(todoContainer);
+
+    for (let x = 0; x < this.todos.length; x++){
+        const section1 = document.createElement("ul");
+        todoContainer.appendChild(section1);
+        const section2 = document.createElement("ul");
+        todoContainer.appendChild(section2);
+        const section3 = document.createElement("ul");
+        todoContainer.appendChild(section3);
+        const section4 = document.createElement("ul");
+        todoContainer.appendChild(section4);
+
+        const name = document.createElement("h3");
+        name.setAttribute("class", "name");
+        name.textContent = `${this.name}`;
+        section1.appendChild(name);
+
+        const description = document.createElement("p");
+        description.setAttribute("class", "description");
+        description.textContent = `Description: ${this.description}`;
+        section2.appendChild(description);
+
+        const date = document.createElement("p");
+        date.setAttribute("class", "date");
+        date.textContent = `Due Date: ${this.dueDate}`;
+        section3.appendChild(date);
+
+        const priority = document.createElement("p");
+        priority.setAttribute("class", "priority");
+        priority.textContent = `Priority: ${this.priority}`;
+        section4.appendChild(priority);
+    }
+
+    const backButton = document.createElement("button");
+    backButton.id = "back-button";
+    backButton.setAttribute("class", "todo-button");
+    backButton.textContent = "Back";
+    backButton.addEventListener("click", function(){renderList()});
+    body.appendChild(backButton);
 }
 
 ToDo.prototype.checkToDo = function(){
