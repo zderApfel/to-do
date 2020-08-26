@@ -16,11 +16,18 @@ function Project(name, todos){
 function ToDo(name, description, dueMonth, dueDay, dueYear, priority){
     this.name = name;
     this.description = description;
-    this.dueDate = format(new Date(dueYear, dueDay, dueMonth), "MM/dd/yyyy");
+    this.dueDate = format(new Date(dueYear, dueMonth, dueDay), "MM/dd/yyyy");
     this.priority = priority;
 }
 
-Project.prototype.checkProject = function(){}
+Project.prototype.checkProject = function(){
+    if (this.name == "" || this.todos.length == 0){
+        return false;
+    }
+    else{
+        return true;
+    }
+}
 
 Project.prototype.renderProject = function(){
     const card = document.createElement('div');
@@ -46,9 +53,9 @@ Project.prototype.renderProject = function(){
                 toDoItem.textContent = this.todos[x].name;
                 todoList.appendChild(toDoItem);
             }
-            else if(x == 2){
+            else if(x == 3){
                 let toDoItem = document.createElement('ol');
-                toDoItem.textContent = "...";
+                toDoItem.textContent = "<More>";
                 todoList.appendChild(toDoItem);
             }
         }

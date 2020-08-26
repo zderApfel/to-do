@@ -4,6 +4,7 @@ import { Project, ToDo, TEST_PROJECTS } from "./makeProjects.js";
 let toDos = [];
 
 function renderProjectForm(){
+    toDos = [];
     const container = document.getElementById("container");
     while (container.firstChild){
         container.removeChild(container.firstChild);
@@ -57,6 +58,13 @@ function renderProjectForm(){
     submitButton.textContent = "Submit";
     submitButton.addEventListener("click", function(){
         let newProject = new Project(projectNameField.value, toDos);
+        if (!newProject.checkProject()){
+            alert("Error! You need a name and at least one To-Do Item!");
+        }
+        else{
+            TEST_PROJECTS.push(newProject);
+            renderList();
+        }
     });
     form.appendChild(submitButton);
 }
@@ -77,7 +85,7 @@ function renderToDoForm(parent){
     toDoButton.setAttribute("type", "button"); //Since I am using a form, this must be here or page reloads!
     toDoButton.textContent = "Add To-Do";
     toDoButton.addEventListener("click", function(){
-        let newToDo = new ToDo(name.value, description.value, month.value, day.value, year.value, null);
+        let newToDo = new ToDo(name.value, description.value, month.value-1, day.value, year.value, priority.value);
         if (!newToDo.checkToDo()){
             alert("Error! Make sure all fields are filled!");
         }
