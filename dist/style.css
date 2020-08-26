@@ -84,6 +84,11 @@ body{
     width: 50px;
 }
 
+#priority-label{
+    vertical-align: 20px;
+    margin-right: 5px;
+}
+
 #priority-selector{
     width: 50px;
 }
