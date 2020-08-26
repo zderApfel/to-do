@@ -95,6 +95,7 @@ body{
 
 #todo-container{
     margin: auto;
+    display: inline-block;
     width: 85%;
     border-style: inset;
     border-color: lightblue;
@@ -107,3 +108,39 @@ body{
     margin: 10px 5px 10px 0;
 }
 
+#todo{
+    margin: auto;
+    border-style: dotted;
+    width: 95%;
+    height: 95%;
+}
+
+#edit-todo, #delete-todo{
+    float: left;
+}
+
+#edit-todo{
+    width: 50px;
+    height: 30px;
+}
+
+#delete-todo{
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    border-color: red;
+    color: white;
+}
+
+#name-and-desc, #todo-date, #priority{
+    text-align: left;
+    margin-left: 10px;
+}
+
+#name-and-desc{
+    font-size: 20px;
+}
+
+#todo-date, #priority{
+    font-size: 15px;
+}

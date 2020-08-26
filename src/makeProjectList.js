@@ -12,13 +12,13 @@ function Project(name, todos){
 }
 
 function ToDo(name, description, dueDate, priority){
-    this.name = name,
+    this.name = name;
     this.description = description;
     this.dueDate = dueDate;
     this.priority = priority;
 }
 
-Project.prototype.makeCard = function(){
+Project.prototype.renderCard = function(){
     const card = document.createElement('div');
     card.setAttribute('class', 'project-card');
     
@@ -52,6 +52,53 @@ Project.prototype.makeCard = function(){
     return card;
 }
 
+ToDo.prototype.renderToDo = function(){
+    const body = document.createElement("div");
+    body.id = "todo";
+
+    const section1 = document.createElement("ul");
+    body.appendChild(section1);
+
+    const section2 = document.createElement("ul");
+    body.appendChild(section2);
+
+    const section3 = document.createElement("ul");
+    body.appendChild(section3);
+
+    const section4 = document.createElement("ul");
+    body.appendChild(section4);
+
+    const deleteButton = document.createElement("button");
+    deleteButton.setAttribute("class", "todo-button");
+    deleteButton.id = "delete-todo";
+    deleteButton.textContent = "X";
+    section1.appendChild(deleteButton);
+    
+    const editButton = document.createElement("button");
+    editButton.setAttribute("class", "todo-button");
+    editButton.id = "edit-todo";
+    editButton.textContent = "Edit";
+    section1.appendChild(editButton);
+
+    const nameAndDesc = document.createElement("p");
+    nameAndDesc.id = "name-and-desc"
+    nameAndDesc.textContent = `${this.name} -- ${this.description}`;
+    section2.appendChild(nameAndDesc);
+
+    const date = document.createElement("p");
+    date.id = "todo-date";
+    date.textContent = `Due Date: ${this.dueDate}`;
+    section3.appendChild(date);
+
+    const priority = document.createElement("p");
+    priority.id = "priority";
+    priority.textContent = `Priority: ${this.priority}`;
+    section4.appendChild(priority);
+
+    return body;
+    
+}
+
 function renderList(){ //Adds projectCards to the DOM
     const container = document.getElementById("container");
     while (container.firstChild){
@@ -72,7 +119,7 @@ function renderList(){ //Adds projectCards to the DOM
 
     container.appendChild(projectTable);
     for (let x = 0; x < TEST_PROJECTS.length; x++){
-        projectTable.appendChild(TEST_PROJECTS[x].makeCard());
+        projectTable.appendChild(TEST_PROJECTS[x].renderCard());
     }
 }
 

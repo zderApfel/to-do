@@ -76,7 +76,10 @@ function renderToDoForm(parent){
     toDoButton.setAttribute("class", "todo-button");
     toDoButton.setAttribute("type", "button"); //Since I am using a form, this must be here or page reloads!
     toDoButton.textContent = "Add To-Do";
-    toDoButton.addEventListener("click", function(){addToDo()});
+    toDoButton.addEventListener("click", function(){
+        let container = document.getElementById("todo-container");
+        container.appendChild(addToDo().renderToDo());
+    });
     parent.appendChild(toDoButton);
 
     const nameLabel = document.createElement("label");
