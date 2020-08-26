@@ -2,8 +2,8 @@ import { projectForm } from './makeProjectForm.js';
 
 const TEST_PROJECTS = [
     new Project("Make cookies for baking party", null),
-    new Project("Make cookies for baking party", null),
-    new Project("Make cookies for baking party", null)
+    new Project("Read more Javascript documentation", null),
+    new Project("Kick gum, chew ass", null)
 ];
 
 function Project(name, todos){
