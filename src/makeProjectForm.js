@@ -1,5 +1,5 @@
 import { makeProjectList } from "./projectList.js";
-import { makeNewProject, addToDo } from "./makeProject.js";
+import { makeNewProject, addToDo } from "./makeProjectList.js";
 
 
 function projectForm(){
