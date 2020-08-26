@@ -2,9 +2,14 @@ import { Project, ToDo } from "./makeProjectList.js";
 import { format } from "date-fns";
 
 function makeNewProject(){
-    let x = new Project(document.getElementById("pname").textContent, []);
-    if (x.name == "" || x.todos == []){
-        alert("Error! You must have a name and at least one to-do item!");
+    let todos = Array.prototype.slice.call(document.getElementsByClassName("new-todos"));
+    let x = new Project(document.getElementById("pname").value, todos);
+    console.log(x.name + x.todos);
+    if (x.name.length != 0 && x.todos.length != 0){
+        alert("Success");
+    }
+    else{
+        alert("Error! You must have a name and at least one to-do item!");     
     }
 }
 

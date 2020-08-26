@@ -61,7 +61,6 @@ function renderProjectForm(){
 }
 
 function renderToDoForm(parent){
-
     const list1 = document.createElement("ul");
     parent.appendChild(list1);
     const list2 = document.createElement("ul");
@@ -78,7 +77,8 @@ function renderToDoForm(parent){
     toDoButton.textContent = "Add To-Do";
     toDoButton.addEventListener("click", function(){
         let container = document.getElementById("todo-container");
-        container.appendChild(addToDo().renderToDo());
+        let newTodo = addToDo();
+        container.appendChild(newTodo.renderToDo());
     });
     parent.appendChild(toDoButton);
 

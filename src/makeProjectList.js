@@ -27,7 +27,7 @@ Project.prototype.renderCard = function(){
     card.appendChild(title);
 
     const todoList = document.createElement('div');
-    todoList.setAttribute('class', 'todos');
+    todoList.setAttribute('class', 'todo-previews');
     card.appendChild(todoList);
 
     if (this.todos == null){
@@ -54,24 +54,26 @@ Project.prototype.renderCard = function(){
 
 ToDo.prototype.renderToDo = function(){
     const body = document.createElement("div");
-    body.id = "todo";
+    body.setAttribute("class", "new-todos");
 
     const section1 = document.createElement("ul");
     body.appendChild(section1);
-
     const section2 = document.createElement("ul");
     body.appendChild(section2);
-
     const section3 = document.createElement("ul");
     body.appendChild(section3);
-
     const section4 = document.createElement("ul");
     body.appendChild(section4);
+    const section5 = document.createElement("ul");
+    body.appendChild(section5);
 
     const deleteButton = document.createElement("button");
     deleteButton.setAttribute("class", "todo-button");
     deleteButton.id = "delete-todo";
     deleteButton.textContent = "X";
+    deleteButton.addEventListener("click", function(){
+        body.remove();
+    });
     section1.appendChild(deleteButton);
     
     const editButton = document.createElement("button");
@@ -80,20 +82,26 @@ ToDo.prototype.renderToDo = function(){
     editButton.textContent = "Edit";
     section1.appendChild(editButton);
 
-    const nameAndDesc = document.createElement("p");
-    nameAndDesc.id = "name-and-desc"
-    nameAndDesc.textContent = `${this.name} -- ${this.description}`;
-    section2.appendChild(nameAndDesc);
+    const name = document.createElement("h3");
+    name.setAttribute("class", "name");
+    name.textContent = `${this.name}`;
+    section2.appendChild(name);
+
+    const description = document.createElement("p");
+    description.setAttribute("class", "description");
+    description.textContent = `Description: ${this.description}`;
+    section3.appendChild(description);
+
 
     const date = document.createElement("p");
-    date.id = "todo-date";
+    date.setAttribute("class", "date");
     date.textContent = `Due Date: ${this.dueDate}`;
-    section3.appendChild(date);
+    section4.appendChild(date);
 
     const priority = document.createElement("p");
-    priority.id = "priority";
+    priority.setAttribute("class", "priority");
     priority.textContent = `Priority: ${this.priority}`;
-    section4.appendChild(priority);
+    section5.appendChild(priority);
 
     return body;
     
