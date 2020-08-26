@@ -38,7 +38,7 @@ body{
     box-shadow: 15px 10px 10px grey;
 }
 
-.todos{
+.todo-previews{
     text-align: left;
     height: 60%;
     width: 90%;
@@ -108,11 +108,9 @@ body{
     margin: 10px 5px 10px 0;
 }
 
-#todo{
+.new-todos{
     margin: auto;
     border-style: dotted;
-    width: 95%;
-    height: 95%;
 }
 
 #edit-todo, #delete-todo{
@@ -132,15 +130,15 @@ body{
     color: white;
 }
 
-#name-and-desc, #todo-date, #priority{
+.name, .description, .date, .priority{
     text-align: left;
     margin-left: 10px;
 }
 
-#name-and-desc{
+.name{
     font-size: 20px;
 }
 
-#todo-date, #priority{
+.date, .priority, .description{
     font-size: 15px;
 }
