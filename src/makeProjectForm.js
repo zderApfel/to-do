@@ -1,6 +1,7 @@
-import { renderList, TEST_PROJECTS } from "./makeProjectList.js";
-import { makeNewProject, addToDo } from "./makeProjects.js";
+import { renderList } from "./makeProjectList.js";
+import { Project, ToDo, TEST_PROJECTS } from "./makeProjects.js";
 
+let toDos = [];
 
 function renderProjectForm(){
     const container = document.getElementById("container");
@@ -54,9 +55,7 @@ function renderProjectForm(){
     submitButton.id = "submit-new-button";
     submitButton.setAttribute("class", "todo-button");
     submitButton.textContent = "Submit";
-    submitButton.addEventListener("click", function(){
-        TEST_PROJECTS.push(makeNewProject());
-    });
+    submitButton.addEventListener("click", function(){});
     form.appendChild(submitButton);
 }
 
@@ -76,9 +75,19 @@ function renderToDoForm(parent){
     toDoButton.setAttribute("type", "button"); //Since I am using a form, this must be here or page reloads!
     toDoButton.textContent = "Add To-Do";
     toDoButton.addEventListener("click", function(){
-        let container = document.getElementById("todo-container");
-        let newTodo = addToDo();
-        container.appendChild(newTodo.renderToDo());
+        let newToDo = new ToDo(name.value, description.value, month.value, day.value, year.value, null);
+        if (!newToDo.checkToDo()){
+            alert("Error! Make sure all fields are filled!");
+        }
+        else{
+            name.value = "";
+            description.value = "";
+            month.value = "";
+            day.value = "";
+            year.value = "";
+            document.getElementById("todo-container").appendChild(newToDo.renderToDo());
+            toDos.push(newToDo);
+        }
     });
     parent.appendChild(toDoButton);
 
