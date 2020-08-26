@@ -1,3 +1,3 @@
-import { makeProjectList } from "./projectList.js";
+import { renderList } from "./makeProjectList.js";
 
-makeProjectList();
+renderList();

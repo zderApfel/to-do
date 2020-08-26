@@ -1,8 +1,8 @@
-import { makeProjectList } from "./projectList.js";
-import { makeNewProject, addToDo } from "./makeProjectList.js";
+import { renderList, TEST_PROJECTS } from "./makeProjectList.js";
+import { makeNewProject, addToDo } from "./makeProjects.js";
 
 
-function projectForm(){
+function renderProjectForm(){
     const container = document.getElementById("container");
     while (container.firstChild){
         container.removeChild(container.firstChild);
@@ -37,7 +37,7 @@ function projectForm(){
     toDoForm.id = "add-todos";
     form.appendChild(toDoForm);
 
-    makeToDoForm(toDoForm);
+    renderToDoForm(toDoForm);
 
     const todoContainer = document.createElement("div");
     todoContainer.id = "todo-container";
@@ -47,18 +47,20 @@ function projectForm(){
     cancelButton.id = "cancel-button";
     cancelButton.setAttribute("class", "todo-button");
     cancelButton.textContent = "Cancel";
-    cancelButton.addEventListener("click", function(){makeProjectList()});
+    cancelButton.addEventListener("click", function(){renderList()});
     form.appendChild(cancelButton);
 
     const submitButton = document.createElement("button");
     submitButton.id = "submit-new-button";
     submitButton.setAttribute("class", "todo-button");
     submitButton.textContent = "Submit";
-    submitButton.addEventListener("click", function(){makeNewProject()});
+    submitButton.addEventListener("click", function(){
+        TEST_PROJECTS.push(makeNewProject());
+    });
     form.appendChild(submitButton);
 }
 
-function makeToDoForm(parent){
+function renderToDoForm(parent){
 
     const list1 = document.createElement("ul");
     parent.appendChild(list1);
@@ -163,4 +165,4 @@ function makeToDoForm(parent){
     defaultPriority.setAttribute("selected", "selected");
 }
 
-export { projectForm }
+export { renderProjectForm }
