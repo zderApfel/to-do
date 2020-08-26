@@ -12,7 +12,6 @@ function ToDo(name, description, dueDate, priority, notes){
     this.description = description;
     this.dueDate = dueDate;
     this.priority = priority;
-    this.notes = notes;
 }
 
 Project.prototype.makeCard = function(){

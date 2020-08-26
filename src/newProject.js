@@ -20,6 +20,9 @@ function addToDo(){
     if (name == "" || description== "" || month == "" || day == "" || year == ""){
         alert("Error! Make sure all fields are filled!");
     }
+    else{
+        return new Todo(name, description, month, day, year)
+    }
 }
 
 function projectForm(){
@@ -86,6 +89,8 @@ function makeToDoForm(parent){
     parent.appendChild(list2);
     const list3 = document.createElement("ul");
     parent.appendChild(list3);
+    const list4 = document.createElement("ul");
+    parent.appendChild(list4);
 
     const toDoButton = document.createElement("button");
     toDoButton.id = "add-todo";
@@ -156,6 +161,25 @@ function makeToDoForm(parent){
     year.setAttribute("class", "date-field");
     year.setAttribute("maxlength", "4");
     list3.appendChild(year);
+
+    const priorityLabel = document.createElement("label");
+    priorityLabel.setAttribute("for", "priority");
+    priorityLabel.id = "priority-label";
+    priorityLabel.textContent = "Priority";
+    list4.appendChild(priorityLabel);
+
+    const priority = document.createElement("select");
+    priority.setAttribute("name", "priority");
+    priority.id = "priority-selector";
+    priority.setAttribute("size", "3");
+    list4.appendChild(priority);
+
+    for (let x = 1; x <= 3; x++){
+        let option = document.createElement("option");
+        option.setAttribute("value", x);
+        option.textContent = x;
+        priority.appendChild(option);
+    }
 }
 
 export { projectForm }
