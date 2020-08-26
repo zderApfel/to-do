@@ -55,7 +55,9 @@ function renderProjectForm(){
     submitButton.id = "submit-new-button";
     submitButton.setAttribute("class", "todo-button");
     submitButton.textContent = "Submit";
-    submitButton.addEventListener("click", function(){});
+    submitButton.addEventListener("click", function(){
+        let newProject = new Project(projectNameField.value, toDos);
+    });
     form.appendChild(submitButton);
 }
 
@@ -102,7 +104,6 @@ function renderToDoForm(parent){
     name.id = "todo-name";
     name.setAttribute("maxlength", "30");
     list1.appendChild(name);
-
     const descLabel = document.createElement("label");
     descLabel.setAttribute("for", "description");
     descLabel.textContent = "Description";
@@ -177,4 +178,4 @@ function renderToDoForm(parent){
     defaultPriority.setAttribute("selected", "selected");
 }
 
-export { renderProjectForm }
+export { renderProjectForm, toDos }

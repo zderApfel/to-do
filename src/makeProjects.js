@@ -1,3 +1,5 @@
+import { toDos } from "./makeProjectForm.js";
+
 import { format } from "date-fns";
 
 const TEST_PROJECTS = [
@@ -55,7 +57,7 @@ Project.prototype.renderProject = function(){
 }
 
 ToDo.prototype.checkToDo = function(){
-    if (this.name == "" || this.description == ""){
+    if (this.name == "" || this.description == "" || this.dueDate == "12/31/1899"){
         return false;
     }
     else{
@@ -77,20 +79,34 @@ ToDo.prototype.renderToDo = function(){
     body.appendChild(section4);
     const section5 = document.createElement("ul");
     body.appendChild(section5);
-
+    
+    let thisTodo = this;
+    function deleteToDo(){
+        body.remove();
+        let x = toDos.indexOf(thisTodo);
+        if (x > -1){
+            toDos.splice(x, 1);
+        }
+    }
     const deleteButton = document.createElement("button");
     deleteButton.setAttribute("class", "todo-button");
     deleteButton.id = "delete-todo";
     deleteButton.textContent = "X";
-    deleteButton.addEventListener("click", function(){
-        body.remove();
-    });
+    deleteButton.addEventListener("click", function(){deleteToDo()});
     section1.appendChild(deleteButton);
     
     const editButton = document.createElement("button");
     editButton.setAttribute("class", "todo-button");
     editButton.id = "edit-todo";
     editButton.textContent = "Edit";
+    editButton.addEventListener("click", function(){
+        document.getElementById("todo-name").value = thisTodo.name;
+        document.getElementById("description").value = thisTodo.description;
+        document.getElementById("due-month").value = thisTodo.dueDate.substring(0, 2);
+        document.getElementById("due-day").value = thisTodo.dueDate.substring(3, 5);
+        document.getElementById("due-year").value = thisTodo.dueDate.substring(6, 10);
+        deleteToDo();
+    });
     section1.appendChild(editButton);
 
     const name = document.createElement("h3");
