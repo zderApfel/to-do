@@ -1,13 +1,17 @@
-import { projectForm } from './newProject.js';
+import { projectForm } from './makeProjectForm.js';
 
-let testProject = new Project("Make cookies for baking party", null);
+const TEST_PROJECTS = [
+    new Project("Make cookies for baking party", null),
+    new Project("Make cookies for baking party", null),
+    new Project("Make cookies for baking party", null)
+];
 
 function Project(name, todos){
     this.name = name; //String
     this.todos = todos; //Array of ToDos
 }
 
-function ToDo(name, description, dueDate, priority, notes){
+function ToDo(name, description, dueDate, priority){
     this.name = name,
     this.description = description;
     this.dueDate = dueDate;
@@ -67,10 +71,9 @@ function makeProjectList(){ //Adds projectCards to the DOM
     buttonContainer.appendChild(makeNew);
 
     container.appendChild(projectTable);
-    projectTable.appendChild(testProject.makeCard());
-    projectTable.appendChild(testProject.makeCard());
-    projectTable.appendChild(testProject.makeCard());
-    projectTable.appendChild(testProject.makeCard());
+    for (let x = 0; x < TEST_PROJECTS.length; x++){
+        projectTable.appendChild(TEST_PROJECTS[x].makeCard());
+    }
 }
 
 export { makeProjectList, Project, ToDo };

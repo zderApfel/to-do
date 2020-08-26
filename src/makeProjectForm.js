@@ -1,29 +1,6 @@
-import { makeProjectList, Project, Todo } from "./projectList.js";
-import { compareAsc, format } from "date-fns";
+import { makeProjectList } from "./projectList.js";
+import { makeNewProject, addToDo } from "./makeProject.js";
 
-format(new Date(2020, 8, 22), "MM/dd/yyyy");
-
-function makeNewProject(){
-    let x = new Project(document.getElementById("pname").textContent, []);
-    if (x.name == "" || x.todos == []){
-        alert("Error! You must have a name and at least one to-do item!");
-    }
-}
-
-function addToDo(){
-    let name = document.getElementById("todo-name").textContent;
-    let description = document.getElementById("description").textContent;
-    let month = document.getElementById("due-month").textContent;
-    let day = document.getElementById("due-day").textContent;
-    let year = document.getElementById("due-year").textContent;
-
-    if (name == "" || description== "" || month == "" || day == "" || year == ""){
-        alert("Error! Make sure all fields are filled!");
-    }
-    else{
-        return new Todo(name, description, month, day, year)
-    }
-}
 
 function projectForm(){
     const container = document.getElementById("container");
@@ -177,9 +154,13 @@ function makeToDoForm(parent){
     for (let x = 1; x <= 3; x++){
         let option = document.createElement("option");
         option.setAttribute("value", x);
+        option.id = `option${x}`;
         option.textContent = x;
         priority.appendChild(option);
     }
+
+    const defaultPriority = document.getElementById("option3");
+    defaultPriority.setAttribute("selected", "selected");
 }
 
 export { projectForm }
