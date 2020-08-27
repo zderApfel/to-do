@@ -2,9 +2,18 @@ import { renderList } from "./makeProjectList.js";
 import { Project, ToDo, TEST_PROJECTS } from "./makeProjects.js";
 
 let toDos = [];
+let formTitle;
 
-function renderProjectForm(){
-    toDos = [];
+function renderProjectForm(editMode, project){
+    if (!editMode){
+        toDos = "";
+        project.name = "";
+        formTitle = "Create New Project";
+    }
+    else {
+        toDos = project.todos;
+        formTitle = "Edit Project";
+    }
     const container = document.getElementById("container");
     while (container.firstChild){
         container.removeChild(container.firstChild);
@@ -15,7 +24,7 @@ function renderProjectForm(){
     container.appendChild(form);
 
     const title = document.createElement("h1");
-    title.textContent = "Create new project";
+    title.textContent = formTitle;
     form.appendChild(title);
 
     const pNameLabel = document.createElement("label");
@@ -28,6 +37,7 @@ function renderProjectForm(){
     projectNameField.setAttribute("type", "text");
     projectNameField.id = "pname";
     projectNameField.setAttribute("maxlength", "50");
+    projectNameField.value = project.name;
     form.appendChild(projectNameField);
 
     const toDoFormTitle = document.createElement("h2");
@@ -44,6 +54,10 @@ function renderProjectForm(){
     const todoContainer = document.createElement("div");
     todoContainer.id = "todo-container";
     form.appendChild(todoContainer);
+
+    for (let x = 0; x < project.todos.length; x++){
+        todoContainer.appendChild(project.todos[x].renderToDo());
+    }
 
     const cancelButton = document.createElement("button");
     cancelButton.id = "cancel-button";
@@ -62,6 +76,10 @@ function renderProjectForm(){
             alert("Error! You need a name and at least one To-Do Item!");
         }
         else{
+            let x = TEST_PROJECTS.indexOf(project);
+            if (x > -1){
+                TEST_PROJECTS.splice(x, 1);
+            }
             TEST_PROJECTS.push(newProject);
             renderList();
         }

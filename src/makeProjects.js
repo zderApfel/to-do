@@ -1,4 +1,4 @@
-import { toDos } from "./makeProjectForm.js";
+import { toDos, renderProjectForm } from "./makeProjectForm.js";
 import { renderList } from "./makeProjectList.js";
 
 import { format } from "date-fns";
@@ -99,24 +99,32 @@ Project.prototype.viewFullProject = function(){
 
         const name = document.createElement("h3");
         name.setAttribute("class", "name");
-        name.textContent = `${this.name}`;
+        name.textContent = `${this.todos[x].name}`;
         section1.appendChild(name);
 
         const description = document.createElement("p");
         description.setAttribute("class", "description");
-        description.textContent = `Description: ${this.description}`;
+        description.textContent = `Description: ${this.todos[x].description}`;
         section2.appendChild(description);
 
         const date = document.createElement("p");
         date.setAttribute("class", "date");
-        date.textContent = `Due Date: ${this.dueDate}`;
+        date.textContent = `Due Date: ${this.todos[x].dueDate}`;
         section3.appendChild(date);
 
         const priority = document.createElement("p");
         priority.setAttribute("class", "priority");
-        priority.textContent = `Priority: ${this.priority}`;
+        priority.textContent = `Priority: ${this.todos[x].priority}`;
         section4.appendChild(priority);
     }
+
+    const editButton = document.createElement("button");
+    editButton.id = "edit-button";
+    editButton.setAttribute("class", "todo-button");
+    editButton.textContent = "Edit";
+    let thisProject = this;
+    editButton.addEventListener("click", function(){renderProjectForm(true, thisProject)});
+    body.appendChild(editButton);
 
     const backButton = document.createElement("button");
     backButton.id = "back-button";

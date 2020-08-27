@@ -1,5 +1,5 @@
 import { renderProjectForm } from './makeProjectForm.js';
-import { TEST_PROJECTS } from "./makeProjects.js";
+import { TEST_PROJECTS, Project } from "./makeProjects.js";
 
 function renderList(){ //Adds projectCards to the DOM
     const container = document.getElementById("container");
@@ -16,7 +16,7 @@ function renderList(){ //Adds projectCards to the DOM
     const makeNew = document.createElement('button');
     makeNew.id = "make-new-button";
     makeNew.textContent = "New Project";
-    makeNew.addEventListener("click", function(){renderProjectForm()});
+    makeNew.addEventListener("click", function(){renderProjectForm(false, new Project(null, []))});
     buttonContainer.appendChild(makeNew);
 
     container.appendChild(projectTable);
