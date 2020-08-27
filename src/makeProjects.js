@@ -3,12 +3,6 @@ import { renderList } from "./makeProjectList.js";
 
 import { format } from "date-fns";
 
-const TEST_PROJECTS = [
-    new Project("Make cookies for baking party", []),
-    new Project("Read more Javascript documentation", []),
-    new Project("Kick gum, chew ass", [])
-];
-
 function Project(name, todos){
     this.name = name; //String
     this.todos = todos; //Array of ToDos
@@ -20,6 +14,8 @@ function ToDo(name, description, dueMonth, dueDay, dueYear, priority){
     this.dueDate = format(new Date(dueYear, dueMonth, dueDay), "MM/dd/yyyy");
     this.priority = priority;
 }
+
+const TEST_PROJECTS = [new Project("Create To-Do Project", [])];
 
 Project.prototype.checkProject = function(){
     if (this.name == "" || this.todos.length == 0){
@@ -132,6 +128,19 @@ Project.prototype.viewFullProject = function(){
     backButton.textContent = "Back";
     backButton.addEventListener("click", function(){renderList()});
     body.appendChild(backButton);
+
+    const deleteButton = document.createElement("button");
+    deleteButton.id = "delete-button";
+    deleteButton.setAttribute("class", "todo-button");
+    deleteButton.textContent = "Delete";
+    deleteButton.addEventListener("click", function(){
+        let x = TEST_PROJECTS.indexOf(thisProject);
+        if (x > -1){
+            TEST_PROJECTS.splice(x, 1);
+        }
+        renderList();
+    });
+    body.appendChild(deleteButton);
 }
 
 ToDo.prototype.checkToDo = function(){

@@ -6,7 +6,7 @@ let formTitle;
 
 function renderProjectForm(editMode, project){
     if (!editMode){
-        toDos = "";
+        toDos = [];
         project.name = "";
         formTitle = "Create New Project";
     }

@@ -8,6 +8,9 @@ function renderList(){ //Adds projectCards to the DOM
     }
     const projectTable = document.createElement('div');
     projectTable.id = "project-table";
+    if (TEST_PROJECTS.length == 2){
+        projectTable.style.cssText = `grid-template-columns: 50% 50%;`;
+    }
 
     const buttonContainer = document.createElement('div');
     buttonContainer.id = "button-container";
